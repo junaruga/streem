@@ -148,7 +148,7 @@ typedef unsigned long long khint64_t;
 #else
 #define kh_inline inline
 #endif
-#endif /* kh_inline */
+#endif                          /* kh_inline */
 
 typedef khint32_t khint_t;
 typedef khint_t khiter_t;
@@ -377,10 +377,13 @@ static const double khash_ac_HASH_UPPER = 0.77;
  */
 static kh_inline khint_t khash_ac_X31_hash_string(const char *s)
 {
-	khint_t h = (khint_t)*s;
-	if (h) for (++s ; *s; ++s) h = (h << 5) - h + (khint_t)*s;
-	return h;
+    khint_t h = (khint_t) * s;
+    if (h)
+        for (++s; *s; ++s)
+            h = (h << 5) - h + (khint_t) * s;
+    return h;
 }
+
 /*! @function
   @abstract     Another interface to const char* hash function
   @param  key   Pointer to a null terminated string [const char*]
@@ -395,13 +398,14 @@ static kh_inline khint_t khash_ac_X31_hash_string(const char *s)
 static kh_inline khint_t khash_ac_Wang_hash(khint_t key)
 {
     key += ~(key << 15);
-    key ^=  (key >> 10);
-    key +=  (key << 3);
-    key ^=  (key >> 6);
+    key ^= (key >> 10);
+    key += (key << 3);
+    key ^= (key >> 6);
     key += ~(key << 11);
-    key ^=  (key >> 16);
+    key ^= (key >> 16);
     return key;
 }
+
 #define kh_int_hash_func2(k) khash_ac_Wang_hash((khint_t)key)
 
 /* --- END OF HASH FUNCTIONS --- */
@@ -599,4 +603,4 @@ typedef const char *kh_cstr_t;
 #define KHASH_MAP_INIT_STR(name, khval_t) \
 	KHASH_INIT(name, kh_cstr_t, khval_t, 1, kh_str_hash_func, kh_str_hash_equal)
 
-#endif /* STRM_AC_KHASH_H */
+#endif                          /* STRM_AC_KHASH_H */
