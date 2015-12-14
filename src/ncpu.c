@@ -5,33 +5,30 @@
 
 #include <wdm.h>
 
-int
-cpu_count()
+int cpu_count()
 {
-  return (int)KeQueryActiveProcessorCount(NULL);
+    return (int) KeQueryActiveProcessorCount(NULL);
 }
 
 #else
 
 #include <windows.h>
 
-int
-cpu_count()
+int cpu_count()
 {
-  SYSTEM_INFO si;
+    SYSTEM_INFO si;
 
-  GetNativeSystemInfo( &si );
-  return (int)si.dwNumberOfProcessors;
+    GetNativeSystemInfo(&si);
+    return (int) si.dwNumberOfProcessors;
 }
 
-#endif  /* WIN_KERNEL_BUILD */
+#endif                          /* WIN_KERNEL_BUILD */
 
-#else  /* POSIX */
+#else                           /* POSIX */
 #include <unistd.h>
 
-int
-cpu_count()
+int cpu_count()
 {
-  return (int)sysconf(_SC_NPROCESSORS_ONLN);
+    return (int) sysconf(_SC_NPROCESSORS_ONLN);
 }
 #endif

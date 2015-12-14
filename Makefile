@@ -8,7 +8,7 @@ TESTS=$(wildcard examples/*.strm)
 
 .PHONY : all test clean
 
-all clean:
+all format clean:
 	$(MAKE) -C src $@
 
 test : all
