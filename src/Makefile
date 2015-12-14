@@ -47,6 +47,7 @@ $(TARGET) : $(OBJS)
 
 format:
 	find . -name "*.c" -o -name "*.h" | xargs gindent -kr -nut
+.PHONY : format
 
 clean :
 	rm -f y.output y.tab.c y.tab.h
