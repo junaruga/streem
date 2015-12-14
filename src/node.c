@@ -41,9 +41,7 @@ int yyparse(parser_state *);
 node *node_array_new()
 {
     VALUES_NEW(node_array, NODE_ARRAY, {
-               v->headers = NULL;
-               v->ns = NULL;
-               });
+               v->headers = NULL; v->ns = NULL;});
 }
 
 node *node_pair_new(node_string key, node * value)
